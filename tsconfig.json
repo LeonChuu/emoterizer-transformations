@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "esNext",
+    "lib": ["ESNext"],
+    "skipLibCheck": true,
+    "outDir": "./target",
+    "strictNullChecks": true,
+  },
+  "include": ["./src/**/*", "./bot.ts","**/*.config.js"]
+}

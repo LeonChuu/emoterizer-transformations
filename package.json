@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "name": "emoterizer-transofrmations",
+  "dependencies": {
+    "imagescript": "matmen/ImageScript"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc && cp -r resources target"
+  }
+}
