@@ -1,9 +1,8 @@
-import { InvertParameter } from '../parameters/InvertParameter'
+import { InvertParameter } from '../parameters/InvertParameter.js'
 
 import { Frame } from 'imagescript'
-import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation'
+import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 
-// to implement
 class Invert extends ImagescriptTransformation {
   async imagescriptTransform (image: Frame[], args: InvertParameter): Promise<Frame[]> {
     return image.map(frame => Frame.from(frame.invert()))

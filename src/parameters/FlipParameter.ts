@@ -1,6 +1,6 @@
-import { TransformationParameter } from './TransformationParameter'
+import { TransformationParameter } from './TransformationParameter.js'
 
-class SpinParameter implements TransformationParameter {
+class FlipParameter implements TransformationParameter {
   readonly transformationName: String
   readonly horizontal: boolean
   readonly vertical: boolean
@@ -12,4 +12,4 @@ class SpinParameter implements TransformationParameter {
   }
 }
 
-export { SpinParameter }
+export { FlipParameter }

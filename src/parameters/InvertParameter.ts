@@ -1,4 +1,4 @@
-import { TransformationParameter } from './TransformationParameter'
+import { TransformationParameter } from './TransformationParameter.js'
 
 class InvertParameter implements TransformationParameter {
   readonly transformationName: String

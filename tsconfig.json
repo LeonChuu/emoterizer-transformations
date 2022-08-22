@@ -4,8 +4,8 @@
     "target": "esNext",
     "lib": ["ESNext"],
     "skipLibCheck": true,
-    "outDir": "./target",
+    "outDir": "./dist",
     "strictNullChecks": true,
   },
-  "include": ["./src/**/*", "./bot.ts","**/*.config.js"]
+  "include": ["./src/**/*", "./bot.ts","**/*.config.js", "Transformation.ts", "index.ts"]
 }

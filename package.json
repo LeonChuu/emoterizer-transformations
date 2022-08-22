@@ -1,11 +1,13 @@
 {
   "version": "0.0.1",
-  "name": "emoterizer-transofrmations",
+  "name": "emoterizer-transformations",
   "dependencies": {
     "imagescript": "matmen/ImageScript"
   },
   "type": "module",
   "scripts": {
-    "build": "tsc && cp -r resources target"
-  }
+    "compile": "tsc",
+    "build": "tsc && cp -r resources dist"
+  },
+  "main": "./dist/index.js"
 }

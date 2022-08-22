@@ -1,4 +1,4 @@
-import { TransformationParameter } from '../parameters/TransformationParameter'
+import { TransformationParameter } from './src/parameters/TransformationParameter'
 abstract class Transformation {
   /**
    * Executes an image transformation, generating an array with one or more frames.

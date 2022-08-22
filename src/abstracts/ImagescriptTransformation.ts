@@ -1,11 +1,11 @@
 import { Image, GIF, Frame, decode as decodeB } from 'imagescript'
-import { TransformationParameter } from '../parameters/TransformationParameter'
-import { Transformation } from './Transformation'
+import { TransformationParameter } from '../parameters/TransformationParameter.js'
+import { Transformation } from '../../Transformation.js'
 
 abstract class ImagescriptTransformation extends Transformation {
   async transform (image: Buffer, args: TransformationParameter): Promise<Buffer> {
     const encodedImage = await this.decode(image)
-    return await this.encodeFrames(await this.imagescriptTransform(encodedImage))
+    return await this.encodeFrames(await this.imagescriptTransform(encodedImage, args))
   }
 
   /**
@@ -14,10 +14,12 @@ abstract class ImagescriptTransformation extends Transformation {
    * @returns
    */
   async decode (image: Buffer): Promise<Frame[]> {
+    console.log(image)
     const decodedData = await decodeB(image)
     if (decodedData.constructor.name === 'GIF') {
+      console.log(decodedData)
       const decodedGif = decodedData as GIF
-      return decodedGif
+      return Array.from(decodedGif.values())
     } else {
       const decodedImage = decodedData as Image
       return [Frame.from(decodedImage)]
