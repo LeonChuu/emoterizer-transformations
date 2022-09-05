@@ -30,7 +30,7 @@ abstract class ImagescriptTransformation extends Transformation {
 
   async encodeFrames (frameList: Frame[]): Promise<Buffer> {
     const result = new GIF(frameList)
-    return Buffer.from(await result.encode(30))
+    return Buffer.from(await result.encode(100))
   }
 }
 
