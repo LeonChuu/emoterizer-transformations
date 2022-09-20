@@ -13,7 +13,7 @@ abstract class ImagescriptTransformation extends Transformation {
    * @param image
    * @returns
    */
-  async decode (image: Buffer): Promise<Frame[]> {
+  private async decode (image: Buffer): Promise<Frame[]> {
     console.log(image)
     const decodedData = await decodeB(image)
     if (decodedData.constructor.name === 'GIF') {
@@ -26,9 +26,9 @@ abstract class ImagescriptTransformation extends Transformation {
     }
   }
 
-  abstract imagescriptTransform (image: Frame[], args: TransformationParameter): Promise<Frame[]>
+  protected abstract imagescriptTransform (image: Frame[], args: TransformationParameter): Promise<Frame[]>
 
-  async encodeFrames (frameList: Frame[]): Promise<Buffer> {
+  private async encodeFrames (frameList: Frame[]): Promise<Buffer> {
     const result = new GIF(frameList)
     return Buffer.from(await result.encode(100))
   }
