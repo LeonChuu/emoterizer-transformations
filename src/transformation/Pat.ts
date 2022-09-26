@@ -29,6 +29,9 @@ class Pat extends ImagescriptTransformation {
     let argSquishOffsety = 0
     let argHandOffsetx = 0
     let argHandOffsety = 0
+    if (args.squish > 100) {
+      throw new RangeError('Squish should be between 1 and 100.')
+    }
     // ensuring there is no division by 0
     const squishVal = Math.max(0.01, (100 - Math.abs(args.squish.valueOf())) / 100)
     const squishFactor = [

@@ -1,5 +1,4 @@
 import { Frame, Image } from 'imagescript'
-import { Transformation } from '../../Transformation.js'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { ShakeParameter } from '../parameters/ShakeParameter.js'
 class Shake extends ImagescriptTransformation {
