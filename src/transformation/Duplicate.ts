@@ -3,10 +3,13 @@ import { SimpleParameter } from '../parameters/SimpleParameter.js'
 import { Frame } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 
-class Invert extends ImagescriptTransformation {
+class Duplicate extends ImagescriptTransformation {
   async imagescriptTransform (image: Frame[], args: SimpleParameter): Promise<Frame[]> {
-    return image.map(frame => Frame.from(frame.invert()))
+    if (image.length > 1) {
+      throw new RangeError('Image should have one frame.')
+    }
+    return [image[0], image[0]]
   }
 }
 
-export { Invert }
+export { Duplicate }

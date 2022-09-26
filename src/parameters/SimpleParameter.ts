@@ -1,6 +1,6 @@
 import { TransformationParameter } from './TransformationParameter.js'
 
-class InvertParameter implements TransformationParameter {
+class SimpleParameter implements TransformationParameter {
   readonly transformationName: String
 
   constructor (transformationName: String) {
@@ -8,4 +8,4 @@ class InvertParameter implements TransformationParameter {
   }
 }
 
-export { InvertParameter }
+export { SimpleParameter }

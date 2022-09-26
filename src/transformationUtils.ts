@@ -20,4 +20,8 @@ function checkDelay(delay: number): number {
   return delay
 }
 
-export { checkAndScaleHundredth, checkDelay }
+function mod (n: number, m: number): number {
+  return ((n % m) + m) % m
+}
+
+export { checkAndScaleHundredth, checkDelay, mod }
