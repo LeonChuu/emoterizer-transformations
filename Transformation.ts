@@ -4,7 +4,7 @@ abstract class Transformation {
    * Executes an image transformation, generating an array with one or more frames.
    * @param args TransformationParameter containing buffer with image.
    */
-  abstract transform (image: Buffer, args: TransformationParameter): Promise<Buffer>
+  abstract transform (image: Buffer, args: TransformationParameter, decodedSizeLimit?: number): Promise<Buffer>
 }
 
 export { Transformation }

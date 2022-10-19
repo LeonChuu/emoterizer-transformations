@@ -4,7 +4,7 @@ import { ShakeParameter } from '../parameters/ShakeParameter.js'
 class Shake extends ImagescriptTransformation {
   // star-shaped movement for the shakes
   movement = [[1, 0], [-1, -1], [0, 1], [1, 0], [-1, 1]]
-  protected async imagescriptTransform (image: Frame[], args: ShakeParameter): Promise<Frame[]> {
+  async imagescriptTransform (image: Frame[], args: ShakeParameter): Promise<Frame[]> {
     const intensity = Math.abs(args.intensity) / 100
     if ((intensity <= 0) || (intensity > 1)) {
       throw new RangeError('intensity must be between 1 and 100')

@@ -3,9 +3,16 @@ import { TransformationParameter } from '../parameters/TransformationParameter.j
 import { Transformation } from '../../Transformation.js'
 
 abstract class ImagescriptTransformation extends Transformation {
-  async transform (image: Buffer, args: TransformationParameter): Promise<Buffer> {
-    const encodedImage = await this.decode(image)
-    return await this.encodeFrames(await this.imagescriptTransform(encodedImage, args))
+  async transform (image: Buffer, args: TransformationParameter, decodedSizeLimit?: number): Promise<Buffer> {
+    const decodedImage = await this.decode(image)
+    if (decodedSizeLimit !== undefined) {
+      const currentSize = decodedImage.reduce((prev, curr: Frame) => { return prev + curr.height * curr.width }, 0)
+      console.log(currentSize)
+      if (currentSize > decodedSizeLimit) {
+        throw new RangeError('Size of decoded image is larger than ' + decodedSizeLimit.toString())
+      }
+    }
+    return await this.encodeFrames(await this.imagescriptTransform(decodedImage, args))
   }
 
   /**
@@ -14,10 +21,8 @@ abstract class ImagescriptTransformation extends Transformation {
    * @returns
    */
   private async decode (image: Buffer): Promise<Frame[]> {
-    console.log(image)
     const decodedData = await decodeB(image)
     if (decodedData.constructor.name === 'GIF') {
-      console.log(decodedData)
       const decodedGif = decodedData as GIF
       return Array.from(decodedGif.values())
     } else {
@@ -26,7 +31,7 @@ abstract class ImagescriptTransformation extends Transformation {
     }
   }
 
-  protected abstract imagescriptTransform (image: Frame[], args: TransformationParameter): Promise<Frame[]>
+  abstract imagescriptTransform (image: Frame[], args: TransformationParameter): Promise<Frame[]>
 
   private async encodeFrames (frameList: Frame[]): Promise<Buffer> {
     const result = new GIF(frameList)

@@ -3,10 +3,9 @@ import { mod } from '../transformationUtils.js'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { SlideParameter } from '../parameters/SlideParameter.js'
 class Slide extends ImagescriptTransformation {
-  protected async imagescriptTransform (image: Frame[], args: SlideParameter): Promise<Frame[]> {
+  async imagescriptTransform (image: Frame[], args: SlideParameter): Promise<Frame[]> {
     const interval = Math.abs(args.interval) / 100
     const width = image[0].width
-    const height = image[0].height
     if ((interval < 0) || (interval > 100)) {
       throw new RangeError('interval must be between 0 and 100')
     }
