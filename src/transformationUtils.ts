@@ -1,4 +1,6 @@
 
+import { Image, Frame } from 'imagescript'
+
 /**
  * Checks the validity of a  0 > value < 100  and scales it to the range of 0 to maxValue.
  * @param value Value to be scaled.
@@ -24,4 +26,30 @@ function mod (n: number, m: number): number {
   return ((n % m) + m) % m
 }
 
-export { checkAndScaleHundredth, checkDelay, mod }
+function flip (image: Frame | Image, horizontal: boolean, vertical: boolean): Image {
+  const frame = image.clone()
+  if (!(horizontal || vertical)) {
+    return frame
+  }
+  const iterator = image.iterateWithColors()
+  let px = iterator.next()
+  let deltaX = (x: number): number => x
+  if (horizontal) {
+    deltaX = (x: number): number => (image.width + 1) - x
+  }
+
+  let deltaY = (x: number): number => x
+  if (vertical) {
+    deltaY = (x: number): number => (image.height + 1) - x
+  }
+
+  while (px.done !== true && px.done !== undefined) {
+    const val = px.value as [x: number, y: number, color: number]
+    const color = image.getPixelAt(deltaX(val[0]), deltaY(val[1]))
+    frame.setPixelAt(val[0], val[1], color)
+    px = iterator.next()
+  }
+  return frame
+}
+
+export { checkAndScaleHundredth, checkDelay, mod, flip }

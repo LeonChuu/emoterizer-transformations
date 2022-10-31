@@ -55,10 +55,10 @@ class Pat extends ImagescriptTransformation {
       console.log(squish)
       console.log(height)
       console.log(width)
-      //see x and y offset, composite it into an empty frame instead
+      // see x and y offset, composite it into an empty frame instead
       const resizedFrame = frame.resize(width * squish[0], height * squish[1])
 
-      //set offset for hand here
+      // set offset for hand here
       return emptyFrame.clone().composite(resizedFrame, squishOffsetx, squishOffsety).composite(origpat[patIndex], 0, handOffsety)
     })
     /*
