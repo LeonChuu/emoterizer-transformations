@@ -1,7 +1,6 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
-import { TransformationParameter } from './TransformationParameter.js'
 
-class PatParameter implements TransformationParameter, AnimatedTransformationParameter {
+class PatParameter implements AnimatedTransformationParameter {
   readonly squish: Number
   frameDuration: number
   readonly transformationName: String

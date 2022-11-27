@@ -1,7 +1,6 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
-import { TransformationParameter } from './TransformationParameter.js'
 
-class SlideParameter implements AnimatedTransformationParameter, TransformationParameter {
+class SlideParameter implements AnimatedTransformationParameter {
   readonly interval: number
   readonly transformationName: String
   readonly frames: number

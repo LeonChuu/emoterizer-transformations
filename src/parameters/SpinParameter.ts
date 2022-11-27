@@ -1,7 +1,6 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
-import { TransformationParameter } from './TransformationParameter.js'
 
-class SpinParameter implements TransformationParameter, AnimatedTransformationParameter {
+class SpinParameter implements AnimatedTransformationParameter {
   readonly transformationName: String
   readonly speed: number
   frameDuration: number

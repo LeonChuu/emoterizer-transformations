@@ -1,9 +1,9 @@
 import { Spin } from './dist/src/transformation/Spin.js'
 import fs from 'fs'
 import { SpinParameter } from './dist/src/parameters/SpinParameter.js'
-import { Hue } from './dist/src/transformation/Hue.js'
+import { Fade } from './dist/src/transformation/Fade.js'
 import { PatParameter } from './dist/src/parameters/PatParameter.js'
-import { HueParameter } from './dist/src/parameters/HueParameter.js'
+import { FadeParameter } from './dist/src/parameters/FadeParameter.js'
 
 if (process.argv.length !== 4) {
   console.log('argument should be file name and output name')
@@ -11,8 +11,8 @@ if (process.argv.length !== 4) {
 }
 
 const file = fs.readFileSync(process.argv[2])
-const transformation = new Hue()
-const test = transformation.transform(file, new HueParameter('test', 36, 50))
+const transformation = new Fade()
+const test = transformation.transform(file, new FadeParameter('test', 0))
 
 test.then(buf => {
   fs.writeFileSync(process.argv[3], buf)

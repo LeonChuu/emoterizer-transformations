@@ -1,7 +1,6 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
-import { TransformationParameter } from './TransformationParameter.js'
 
-class ShuffleParameter implements AnimatedTransformationParameter, TransformationParameter {
+class ShuffleParameter implements AnimatedTransformationParameter {
   readonly isVertical: boolean
   readonly transformationName: String
   frameDuration: number
