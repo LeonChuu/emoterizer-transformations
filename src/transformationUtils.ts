@@ -1,5 +1,5 @@
 
-import { Image, Frame } from 'imagescript'
+import { Image, Frame, decode as decodeB, GIF } from 'imagescript'
 
 /**
  * Checks the validity of a  0 > value < 100  and scales it to the range of 0 to maxValue.
@@ -7,7 +7,7 @@ import { Image, Frame } from 'imagescript'
  * @param maxValue Max value in the range of 0 to maxValue.
  * @returns scaled value.
  */
-function checkAndScaleHundredth(value: number, maxValue: number): number {
+function checkAndScaleHundredth (value: number, maxValue: number): number {
   if (value <= 0 || value >= 100) {
     throw RangeError(String(value) + ' is out of range 0 to 100.')
   }
@@ -15,7 +15,7 @@ function checkAndScaleHundredth(value: number, maxValue: number): number {
   return value * maxValue / 100
 }
 
-function checkDelay(delay: number): number {
+function checkDelay (delay: number): number {
   if (delay < 1) {
     throw RangeError(String(delay) + 'should be greater than 1.')
   }
@@ -26,6 +26,13 @@ function mod (n: number, m: number): number {
   return ((n % m) + m) % m
 }
 
+/**
+ * Flips an image on the horizontal or vertical axis.
+ * @param image
+ * @param horizontal
+ * @param vertical
+ * @returns
+ */
 function flip (image: Frame | Image, horizontal: boolean, vertical: boolean): Image {
   const frame = image.clone()
   if (!(horizontal || vertical)) {
@@ -52,4 +59,19 @@ function flip (image: Frame | Image, horizontal: boolean, vertical: boolean): Im
   return frame
 }
 
-export { checkAndScaleHundredth, checkDelay, mod, flip }
+/**
+ * Gets a buffer with an image and separates it into an array of Frames.
+ * @param image
+ * @returns
+ */
+async function decode (image: Buffer): Promise<Frame[]> {
+  const decodedData = await decodeB(image)
+  if (decodedData.constructor.name === 'GIF') {
+    const decodedGif = decodedData as GIF
+    return Array.from(decodedGif.values())
+  } else {
+    const decodedImage = decodedData as Image
+    return [Frame.from(decodedImage)]
+  }
+}
+export { checkAndScaleHundredth, checkDelay, mod, flip, decode }

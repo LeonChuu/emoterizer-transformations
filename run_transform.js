@@ -1,9 +1,9 @@
 import { Spin } from './dist/src/transformation/Spin.js'
 import fs from 'fs'
 import { SpinParameter } from './dist/src/parameters/SpinParameter.js'
-import { Fade } from './dist/src/transformation/Fade.js'
+import { Composite } from './dist/src/transformation/Composite.js'
 import { PatParameter } from './dist/src/parameters/PatParameter.js'
-import { FadeParameter } from './dist/src/parameters/FadeParameter.js'
+import { CompositeParameter } from './dist/src/parameters/CompositeParameter.js'
 
 if (process.argv.length !== 4) {
   console.log('argument should be file name and output name')
@@ -11,8 +11,8 @@ if (process.argv.length !== 4) {
 }
 
 const file = fs.readFileSync(process.argv[2])
-const transformation = new Fade()
-const test = transformation.transform(file, new FadeParameter('test', 0))
+const transformation = new Composite()
+const test = transformation.transform(file, new CompositeParameter('test', fs.readFileSync('./santa.png'), 30, -20, 100))
 
 test.then(buf => {
   fs.writeFileSync(process.argv[3], buf)
