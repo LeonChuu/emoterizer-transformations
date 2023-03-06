@@ -1,7 +1,7 @@
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { Frame, Image } from 'imagescript'
 import { ShuffleParameter } from '../parameters/ShuffleParameter.js'
-import { flip } from '../transformationUtils.js'
+import { flip, mapToFrames } from '../transformationUtils.js'
 
 class Shuffle extends ImagescriptTransformation {
   async imagescriptTransform (image: Frame[], args: ShuffleParameter): Promise<Frame[]> {
@@ -22,7 +22,7 @@ class Shuffle extends ImagescriptTransformation {
         currentOrientationHorizontal = !currentOrientationHorizontal
       }
     })
-    return result.map(frame => Frame.from(frame, args.frameDuration, undefined, undefined, Frame.DISPOSAL_BACKGROUND))
+    return mapToFrames(result, image, args.frameDuration)
   }
 }
 

@@ -3,6 +3,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { Frame, Image, GIF } from 'imagescript'
 import { WobbleParameter } from '../parameters/WobbleParameter.js'
+import { mapToFrames } from '../transformationUtils.js'
 
 class Wobble extends ImagescriptTransformation {
   async imagescriptTransform (image: Frame[], args: WobbleParameter): Promise<Frame[]> {
@@ -11,7 +12,6 @@ class Wobble extends ImagescriptTransformation {
     const width = firstFrame.width
     const length = image.length
     const emptyFrame = new Image(width, height).fill(0x00000000)
-    const minSize = 4
     if (args.squish > 100) {
       throw new RangeError('Squish should be between 1 and 100.')
     }
@@ -42,7 +42,7 @@ class Wobble extends ImagescriptTransformation {
     if (length === 1) {
       inputImage = Array.from(Array(4), () => Frame.from(image[0].clone()))
     }
-    const outputFrameList = inputImage.map((frame, i) => {
+    const outputImageList = inputImage.map((frame, i) => {
       const squishIndex = i % squishFactor.length
       const squish = squishFactor[squishIndex]
       const squishOffsety = height * (1 - squish[1])
@@ -81,13 +81,7 @@ class Wobble extends ImagescriptTransformation {
       return []
     })
     */
-    return outputFrameList.map(frame => Frame.from(
-      frame,
-      args.frameDuration,
-      undefined,
-      undefined,
-      Frame.DISPOSAL_BACKGROUND
-    ))
+    return mapToFrames(outputImageList, image, args.frameDuration)
   }
 }
 

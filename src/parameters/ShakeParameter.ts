@@ -3,8 +3,8 @@ import { AnimatedTransformationParameter } from './AnimatedTransformationParamet
 class ShakeParameter implements AnimatedTransformationParameter {
   readonly intensity: number
   readonly transformationName: String
-  frameDuration: number
-  constructor (transformationName: String, intensity: number, frameDuration: number = 20) {
+  frameDuration?: number
+  constructor (transformationName: String, intensity: number, frameDuration?: number) {
     this.frameDuration = frameDuration
     this.transformationName = transformationName
     this.intensity = intensity

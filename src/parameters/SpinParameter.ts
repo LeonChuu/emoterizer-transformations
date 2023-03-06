@@ -3,9 +3,9 @@ import { AnimatedTransformationParameter } from './AnimatedTransformationParamet
 class SpinParameter implements AnimatedTransformationParameter {
   readonly transformationName: String
   readonly speed: number
-  frameDuration: number
+  frameDuration?: number
 
-  constructor (transformationName: String, speed: number, frameDuration: number = 100) {
+  constructor (transformationName: String, speed: number, frameDuration?: number) {
     this.transformationName = transformationName
     this.speed = speed
     this.frameDuration = frameDuration

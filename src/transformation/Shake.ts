@@ -18,7 +18,6 @@ class Shake extends ImagescriptTransformation {
     const maxFrames = Math.max(image.length, this.movement.length)
 
     const outputImageList: Image[] = []
-
     for (let i = 0; i < maxFrames; i++) {
       const currentMovement = this.movement[i % this.movement.length]
       const currentFrame = image[i % image.length].clone()

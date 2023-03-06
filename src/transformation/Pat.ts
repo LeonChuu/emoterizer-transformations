@@ -5,6 +5,7 @@ import { Frame, Image, GIF } from 'imagescript'
 import { PatParameter } from '../parameters/PatParameter.js'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import { mapToFrames } from '../transformationUtils.js'
 
 const filenamevar = fileURLToPath(import.meta.url)
 const dirnamevar = dirname(filenamevar)
@@ -43,7 +44,7 @@ class Pat extends ImagescriptTransformation {
     if (length === 1) {
       image = Array.from(Array(4), () => Frame.from(image[0].clone()))
     }
-    const outputFrameList = image.map((frame, i) => {
+    const outputImageList = image.map((frame, i) => {
       const squishIndex = i % squishFactor.length
       const patIndex = i % origpat.length
       const squish = squishFactor[squishIndex]
@@ -84,13 +85,7 @@ class Pat extends ImagescriptTransformation {
       return []
     })
     */
-    return outputFrameList.map(frame => Frame.from(
-      frame,
-      args.frameDuration,
-      undefined,
-      undefined,
-      Frame.DISPOSAL_BACKGROUND
-    ))
+    return mapToFrames(outputImageList, image, args.frameDuration)
   }
 }
 

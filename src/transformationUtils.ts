@@ -74,4 +74,15 @@ async function decode (image: Buffer): Promise<Frame[]> {
     return [Frame.from(decodedImage)]
   }
 }
-export { checkAndScaleHundredth, checkDelay, mod, flip, decode }
+
+function mapToFrames (imageList: Image[], originalFrames: Frame[], frameDuration?: number, disposalType: string = Frame.DISPOSAL_BACKGROUND): Frame[] {
+  return imageList.map(
+    (frame, index) => Frame.from(
+      frame,
+      frameDuration === undefined ? originalFrames[index % originalFrames.length].duration : frameDuration,
+      0,
+      0,
+      disposalType))
+}
+
+export { checkAndScaleHundredth, checkDelay, mod, flip, decode, mapToFrames }

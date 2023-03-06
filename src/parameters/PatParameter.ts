@@ -2,9 +2,9 @@ import { AnimatedTransformationParameter } from './AnimatedTransformationParamet
 
 class PatParameter implements AnimatedTransformationParameter {
   readonly squish: Number
-  frameDuration: number
+  frameDuration?: number
   readonly transformationName: String
-  constructor (transformationName: String, squish: Number, frameDuration: number = 100) {
+  constructor (transformationName: String, squish: Number, frameDuration?: number) {
     this.transformationName = transformationName
     this.squish = squish
     this.frameDuration = frameDuration

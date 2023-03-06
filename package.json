@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "name": "emoterizer-transformations",
   "dependencies": {
-    "imagescript": "matmen/ImageScript",
+    "imagescript": "LeonChuu/ImageScript",
     "lib-upng": "^3.0.0"
   },
   "type": "module",

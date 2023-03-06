@@ -1,5 +1,5 @@
 import { Frame, Image } from 'imagescript'
-import { mod } from '../transformationUtils.js'
+import { mapToFrames, mod } from '../transformationUtils.js'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { SlideParameter } from '../parameters/SlideParameter.js'
 class Slide extends ImagescriptTransformation {
@@ -20,9 +20,7 @@ class Slide extends ImagescriptTransformation {
       const currentFrame = image[i % image.length].clone()
       outputImageList.push(this.slideFrame(currentFrame, i * slice, 0, interval * width))
     }
-    return outputImageList.map(frame =>
-      Frame.from(frame, args.frameDuration, undefined, undefined, Frame.DISPOSAL_BACKGROUND)
-    )
+    return mapToFrames(outputImageList, image, args.frameDuration)
   }
 
   private slideFrame (image: Frame | Image, deltaX: number, deltaY: number, interval: number): Image {
