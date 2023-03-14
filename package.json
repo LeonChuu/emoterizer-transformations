@@ -11,5 +11,8 @@
     "compile": "tsc",
     "build": "tsc && cp -r resources dist"
   },
-  "main": "./dist/index.js"
+  "main": "./dist/index.js",
+  "devDependencies": {
+    "@types/node": "^18.15.2"
+  }
 }
