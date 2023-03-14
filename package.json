@@ -7,6 +7,7 @@
   },
   "type": "module",
   "scripts": {
+    "prepare": "npm run build",
     "compile": "tsc",
     "build": "tsc && cp -r resources dist"
   },
