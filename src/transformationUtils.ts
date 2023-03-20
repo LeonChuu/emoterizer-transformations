@@ -1,6 +1,6 @@
 
-import { Image, Frame, decode as decodeB, GIF } from 'imagescript'
-
+import { Image, Frame, decode as decodeB, GIF, ImageType } from 'imagescript'
+import { decode as decodeAPNG } from 'lib-upng'
 /**
  * Checks the validity of a  0 > value < 100  and scales it to the range of 0 to maxValue.
  * @param value Value to be scaled.
@@ -65,6 +65,7 @@ function flip (image: Frame | Image, horizontal: boolean, vertical: boolean): Im
  * @returns
  */
 async function decode (image: Buffer): Promise<Frame[]> {
+  // const decodedData = toRGBA8(decodeAPNG(image)) as Buffer[]
   const decodedData = await decodeB(image)
   if (decodedData.constructor.name === 'GIF') {
     const decodedGif = decodedData as GIF

@@ -13,7 +13,7 @@ if (process.argv.length !== 4) {
 }
 
 const file = fs.readFileSync(process.argv[2])
-const transformation = new Disposal()
+const transformation = new APNG()
 
 /*
 decodeB(fs.readFileSync('./santa.png')).then(frame => {
@@ -27,7 +27,7 @@ decodeB(fs.readFileSync('./santa.png')).then(frame => {
   fs.writeFileSync(process.argv[3], new Uint8Array(result))
 }).catch(e => console.error(e))
 */
-const test = transformation.transform(file, new DisposalParameter('test', Frame.DISPOSAL_KEEP))
+const test = transformation.transform(file, {colorNumber: 0})
 
 test.then(buf => {
   fs.writeFileSync(process.argv[3], buf)
