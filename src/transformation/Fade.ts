@@ -1,7 +1,7 @@
 import { Frame, Image } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { FadeParameter } from '../parameters/FadeParameter.js'
-import { mapToFrames } from '../transformationUtils.js'
+import { imagesToFrames } from '../transformationUtils.js'
 
 class Fade extends ImagescriptTransformation {
   async imagescriptTransform (image: Frame[], args: FadeParameter): Promise<Frame[]> {
@@ -33,8 +33,7 @@ class Fade extends ImagescriptTransformation {
     }
     outputImageList.push(empty)
 
-    const result = mapToFrames(outputImageList, image, args.frameDuration)
-    result[result.length - 1].duration = args.lastFrameDuration
+    const result = imagesToFrames(outputImageList)
     return result
   }
 

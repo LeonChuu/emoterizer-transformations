@@ -86,4 +86,8 @@ function mapToFrames (imageList: Image[], originalFrames: Frame[], frameDuration
       disposalType))
 }
 
-export { checkAndScaleHundredth, checkDelay, mod, flip, decode, mapToFrames }
+function imagesToFrames (imageList: Image[]): Frame[] {
+  return imageList.map(image => Frame.from(image, undefined, undefined, undefined, Frame.DISPOSAL_BACKGROUND))
+}
+
+export { checkAndScaleHundredth, checkDelay, mod, flip, decode, mapToFrames, imagesToFrames }

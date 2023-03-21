@@ -1,6 +1,6 @@
 import { SimpleParameter } from '../parameters/SimpleParameter.js'
 
-import { Frame } from 'imagescript'
+import { Frame, Image } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 
 class Duplicate extends ImagescriptTransformation {
