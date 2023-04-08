@@ -1,18 +1,16 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
 
-class CompositeParameter implements AnimatedTransformationParameter {
-  frameDuration: number
-  transformationName: String
-
+class CompositeParameter extends AnimatedTransformationParameter {
   readonly imageOnTop: Buffer
   readonly offsetX: number
   readonly offsetY: number
-  constructor (transformationName: String, imageOnTop: Buffer, offsetX: number, offsetY: number, frameDuration: number = 100) {
-    this.transformationName = transformationName
+
+  constructor (imageOnTop: Buffer, offsetX: number, offsetY: number, frameDuration: number = 100,
+    firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
+    super('composite', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
     this.offsetX = offsetX
     this.offsetY = offsetY
     this.imageOnTop = imageOnTop
-    this.frameDuration = frameDuration
   }
 }
 

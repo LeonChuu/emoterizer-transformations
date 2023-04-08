@@ -2,7 +2,7 @@ import { SpinParameter } from '../parameters/SpinParameter.js'
 
 import { Frame, Image } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
-import { checkAndScaleHundredth, mapToFrames } from '../transformationUtils.js'
+import { checkAndScaleHundredth, imageToAnimatedFrames } from '../transformationUtils.js'
 
 class Spin extends ImagescriptTransformation {
   CYCLE = 360
@@ -18,7 +18,7 @@ class Spin extends ImagescriptTransformation {
       result.push(image[frameIndex].clone().rotate(cumulativeAngle, false))
     }
 
-    return mapToFrames(result, image, args.frameDuration)
+    return imageToAnimatedFrames(result, image, args)
   }
 }
 

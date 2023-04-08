@@ -5,7 +5,7 @@ import { Frame, Image, GIF } from 'imagescript'
 import { PatParameter } from '../parameters/PatParameter.js'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
-import { mapToFrames } from '../transformationUtils.js'
+import { imageToAnimatedFrames } from '../transformationUtils.js'
 
 const filenamevar = fileURLToPath(import.meta.url)
 const dirnamevar = dirname(filenamevar)
@@ -26,10 +26,10 @@ class Pat extends ImagescriptTransformation {
     const origpat = (await this.patGif).map(frame => frame.resize(width, height))
     const emptyFrame = new Image(width, height).fill(0x00000000)
 
-    let argSquishOffsetx = 0
-    let argSquishOffsety = 0
-    let argHandOffsetx = 0
-    let argHandOffsety = 0
+    const argSquishOffsetx = 0
+    const argSquishOffsety = 0
+    const argHandOffsetx = 0
+    const argHandOffsety = 0
     if (args.squish > 100) {
       throw new RangeError('Squish should be between 1 and 100.')
     }
@@ -85,7 +85,7 @@ class Pat extends ImagescriptTransformation {
       return []
     })
     */
-    return mapToFrames(outputImageList, image, args.frameDuration)
+    return imageToAnimatedFrames(outputImageList, image, args)
   }
 }
 

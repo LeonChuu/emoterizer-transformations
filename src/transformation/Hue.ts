@@ -2,7 +2,7 @@
 import { Frame, Image } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { HueParameter } from '../parameters/HueParameter.js'
-import { mapToFrames } from '../transformationUtils.js'
+import { imageToAnimatedFrames } from '../transformationUtils.js'
 
 class Hue extends ImagescriptTransformation {
   CYCLE = 360
@@ -17,7 +17,7 @@ class Hue extends ImagescriptTransformation {
     for (let i = 0; i < args.frames; i++) {
       outputImageList.push(image[i % image.length].clone().hueShift(shift * i))
     }
-    return mapToFrames(outputImageList, image, args.frameDuration)
+    return imageToAnimatedFrames(outputImageList, image, args)
   }
 }
 

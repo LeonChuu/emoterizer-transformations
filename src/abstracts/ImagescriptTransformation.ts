@@ -15,13 +15,10 @@ abstract class ImagescriptTransformation extends Transformation {
       }
     }
     return await this.encodeFrames(
-      this.computeAnimationDelay(await this.imagescriptTransform(decodedImage, args), decodedImage, args)
+      await this.imagescriptTransform(decodedImage, args)
     )
   }
 
-  private computeAnimationDelay (animatedFrames: Frame[], originalFrames: Frame[], args: AnimatedTransformationParameter): Frame[] {
-    return animatedFrames
-  }
   abstract imagescriptTransform (image: Frame[], args: TransformationParameter): Promise<Frame[]>
 
   private async encodeFrames (frameList: Frame[]): Promise<Buffer> {

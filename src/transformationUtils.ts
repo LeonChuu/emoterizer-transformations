@@ -1,6 +1,7 @@
 
-import { Image, Frame, decode as decodeB, GIF, ImageType } from 'imagescript'
+import { Image, Frame, decode as decodeB, GIF } from 'imagescript'
 import { decode as decodeAPNG } from 'lib-upng'
+import { AnimatedTransformationParameter } from './parameters/AnimatedTransformationParameter.js'
 /**
  * Checks the validity of a  0 > value < 100  and scales it to the range of 0 to maxValue.
  * @param value Value to be scaled.
@@ -76,18 +77,40 @@ async function decode (image: Buffer): Promise<Frame[]> {
   }
 }
 
-function mapToFrames (imageList: Image[], originalFrames: Frame[], frameDuration?: number, disposalType: string = Frame.DISPOSAL_BACKGROUND): Frame[] {
-  return imageList.map(
+function imageToAnimatedFrames (imageList: Image[], originalFrames?: Frame[], args?: AnimatedTransformationParameter): Frame[] {
+  let disposalType: string|undefined = Frame.DISPOSAL_BACKGROUND
+  let frameDuration: number|undefined
+
+  if (originalFrames === undefined) {
+    return imageList.map(image => Frame.from(image, undefined, undefined, undefined, disposalType))
+  }
+
+  if (args !== undefined) {
+    frameDuration = args.frameDuration
+    disposalType = args.disposalType
+  }
+
+  const result = imageList.map(
     (frame, index) => Frame.from(
       frame,
       frameDuration === undefined ? originalFrames[index % originalFrames.length].duration : frameDuration,
       0,
       0,
       disposalType))
+
+  if (args === undefined) {
+    return result
+  }
+
+  if (args.firstFrameDuration !== undefined) {
+    result[0].duration = args.firstFrameDuration
+  }
+
+  if (args.lastFrameDuration !== undefined) {
+    result[result.length - 1].duration = args.lastFrameDuration
+  }
+
+  return result
 }
 
-function imagesToFrames (imageList: Image[]): Frame[] {
-  return imageList.map(image => Frame.from(image, undefined, undefined, undefined, Frame.DISPOSAL_BACKGROUND))
-}
-
-export { checkAndScaleHundredth, checkDelay, mod, flip, decode, mapToFrames, imagesToFrames }
+export { checkAndScaleHundredth, checkDelay, mod, flip, decode, imageToAnimatedFrames }

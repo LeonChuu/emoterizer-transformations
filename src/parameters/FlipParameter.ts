@@ -1,12 +1,11 @@
 import { TransformationParameter } from './TransformationParameter.js'
 
-class FlipParameter implements TransformationParameter {
-  readonly transformationName: String
+class FlipParameter extends TransformationParameter {
   readonly horizontal: boolean
   readonly vertical: boolean
 
-  constructor (transformationName: String, horizontal: boolean, vertical: boolean) {
-    this.transformationName = transformationName
+  constructor (horizontal: boolean, vertical: boolean) {
+    super('flip')
     this.horizontal = horizontal
     this.vertical = vertical
   }

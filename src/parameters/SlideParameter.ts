@@ -1,15 +1,12 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
 
-class SlideParameter implements AnimatedTransformationParameter {
-  readonly interval: number
-  readonly transformationName: String
+class SlideParameter extends AnimatedTransformationParameter {
   readonly frames: number
-  frameDuration?: number
-  constructor (transformationName: String, interval: number, frames: number = 10, frameDuration?: number) {
-    this.frameDuration = frameDuration
-    this.transformationName = transformationName
+  readonly interval: number
+  constructor (frames: number, interval: number, frameDuration?: number,
+    firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
+    super('slide', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
     this.frames = frames
-    this.interval = interval
   }
 }
 

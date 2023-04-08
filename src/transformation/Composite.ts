@@ -1,7 +1,7 @@
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { Frame, Image } from 'imagescript'
 import { CompositeParameter } from '../parameters/CompositeParameter.js'
-import { decode, mapToFrames } from '../transformationUtils.js'
+import { decode, imageToAnimatedFrames } from '../transformationUtils.js'
 
 class Composite extends ImagescriptTransformation {
   async imagescriptTransform (image: Frame[], args: CompositeParameter): Promise<Frame[]> {
@@ -13,7 +13,7 @@ class Composite extends ImagescriptTransformation {
           .clone(), args.offsetX, args.offsetY)
     })
 
-    return mapToFrames(outputImageList, image, args.frameDuration)
+    return imageToAnimatedFrames(outputImageList, image, args)
   }
 }
 

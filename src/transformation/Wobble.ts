@@ -3,7 +3,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { Frame, Image, GIF } from 'imagescript'
 import { WobbleParameter } from '../parameters/WobbleParameter.js'
-import { mapToFrames } from '../transformationUtils.js'
+import { imageToAnimatedFrames } from '../transformationUtils.js'
 
 class Wobble extends ImagescriptTransformation {
   async imagescriptTransform (image: Frame[], args: WobbleParameter): Promise<Frame[]> {
@@ -81,7 +81,7 @@ class Wobble extends ImagescriptTransformation {
       return []
     })
     */
-    return mapToFrames(outputImageList, image, args.frameDuration)
+    return imageToAnimatedFrames(outputImageList, image, args)
   }
 }
 

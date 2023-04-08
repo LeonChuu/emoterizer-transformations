@@ -1,11 +1,10 @@
 import { TransformationParameter } from './TransformationParameter.js'
 
-class FisheyeParameter implements TransformationParameter {
-  readonly transformationName: String
+class FisheyeParameter extends TransformationParameter {
   readonly radius: number
 
-  constructor (transformationName: String, radius: number) {
-    this.transformationName = transformationName
+  constructor (radius: number) {
+    super('fisheye')
     this.radius = radius
   }
 }

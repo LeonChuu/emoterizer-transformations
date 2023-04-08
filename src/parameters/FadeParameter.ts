@@ -1,16 +1,11 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
 
-class FadeParameter implements AnimatedTransformationParameter {
-  frameDuration: number|undefined
-  lastFrameDuration: number
-  transformationName: String
-
+class FadeParameter extends AnimatedTransformationParameter {
   readonly frameNumber: number
-  constructor (transformationName: String, frameNumber: number, lastFrameDuration: number = 1000, frameDuration?: number) {
-    this.transformationName = transformationName
+  constructor (frameNumber: number, frameDuration: number = 100,
+    firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
+    super('fade', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
     this.frameNumber = frameNumber
-    this.frameDuration = frameDuration
-    this.lastFrameDuration = lastFrameDuration
   }
 }
 

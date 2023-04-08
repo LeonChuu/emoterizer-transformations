@@ -1,14 +1,11 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
 
-class SpinParameter implements AnimatedTransformationParameter {
-  readonly transformationName: String
+class SpinParameter extends AnimatedTransformationParameter {
   readonly speed: number
-  frameDuration?: number
-
-  constructor (transformationName: String, speed: number, frameDuration?: number) {
-    this.transformationName = transformationName
+  constructor (speed: number, frameDuration?: number,
+    firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
+    super('speed', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
     this.speed = speed
-    this.frameDuration = frameDuration
   }
 }
 

@@ -1,13 +1,10 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
-import { TransformationParameter } from './TransformationParameter.js'
 
-class HueParameter implements AnimatedTransformationParameter, TransformationParameter {
-  readonly transformationName: String
+class HueParameter extends AnimatedTransformationParameter {
   readonly frames: number
-  frameDuration?: number
-  constructor (transformationName: String, frames: number = 10, frameDuration?: number) {
-    this.frameDuration = frameDuration
-    this.transformationName = transformationName
+  constructor (frames: number = 10, frameDuration: number = 130,
+    firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
+    super('hue', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
     this.frames = frames
   }
 }

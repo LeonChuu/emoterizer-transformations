@@ -1,12 +1,11 @@
 import { TransformationParameter } from './TransformationParameter.js'
 
-class CircleParameter implements TransformationParameter {
-  readonly transformationName: String
+class CircleParameter extends TransformationParameter {
   readonly largerDimension: boolean
   readonly feathering: number
 
-  constructor (transformationName: String, largerDimension: boolean, feathering: number) {
-    this.transformationName = transformationName
+  constructor (largerDimension: boolean, feathering: number) {
+    super('circle')
     this.feathering = feathering
     this.largerDimension = largerDimension
   }

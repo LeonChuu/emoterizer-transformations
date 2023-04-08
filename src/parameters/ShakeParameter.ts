@@ -1,12 +1,10 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
 
-class ShakeParameter implements AnimatedTransformationParameter {
+class ShakeParameter extends AnimatedTransformationParameter {
   readonly intensity: number
-  readonly transformationName: String
-  frameDuration?: number
-  constructor (transformationName: String, intensity: number, frameDuration?: number) {
-    this.frameDuration = frameDuration
-    this.transformationName = transformationName
+  constructor (intensity: number, frameDuration?: number,
+    firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
+    super('shake', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
     this.intensity = intensity
   }
 }

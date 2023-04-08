@@ -1,12 +1,11 @@
 import { AnimatedTransformationParameter } from './AnimatedTransformationParameter.js'
 
-class ShuffleParameter implements AnimatedTransformationParameter {
+class ShuffleParameter extends AnimatedTransformationParameter {
   readonly isVertical: boolean
-  readonly transformationName: String
-  frameDuration?: number
-  constructor (transformationName: String, isVertical: boolean, frameDuration?: number) {
-    this.frameDuration = frameDuration
-    this.transformationName = transformationName
+
+  constructor (isVertical: boolean, frameDuration?: number,
+    firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
+    super('shuffle', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
     this.isVertical = isVertical
   }
 }
