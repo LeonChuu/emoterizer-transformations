@@ -34,4 +34,5 @@ class Shake extends ImagescriptTransformation {
   }
 }
 
-export { Shake }
+const shake = new Shake()
+export { shake, Shake }

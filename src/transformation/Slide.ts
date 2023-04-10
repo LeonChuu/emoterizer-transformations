@@ -46,4 +46,5 @@ class Slide extends ImagescriptTransformation {
   }
 }
 
-export { Slide }
+const slide = new Slide()
+export { slide, Slide }

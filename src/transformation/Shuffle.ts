@@ -26,4 +26,5 @@ class Shuffle extends ImagescriptTransformation {
   }
 }
 
-export { Shuffle }
+const shuffle = new Shuffle()
+export { shuffle, Shuffle }

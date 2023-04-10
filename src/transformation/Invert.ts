@@ -10,4 +10,5 @@ class Invert extends ImagescriptTransformation {
   }
 }
 
-export { Invert }
+const invert = new Invert()
+export { invert, Invert }

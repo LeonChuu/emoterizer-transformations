@@ -10,4 +10,5 @@ class Circle extends ImagescriptTransformation {
   }
 }
 
-export { Circle }
+const circle = new Circle()
+export { circle, Circle }

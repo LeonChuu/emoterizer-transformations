@@ -10,4 +10,5 @@ class Speed extends ImagescriptTransformation {
   }
 }
 
-export { Speed }
+const speed = new Speed()
+export { speed, Speed }

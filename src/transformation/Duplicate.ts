@@ -12,4 +12,5 @@ class Duplicate extends ImagescriptTransformation {
   }
 }
 
-export { Duplicate }
+const duplicate = new Duplicate()
+export { duplicate, Duplicate }

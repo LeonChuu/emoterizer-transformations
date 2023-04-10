@@ -10,4 +10,5 @@ class Fisheye extends ImagescriptTransformation {
   }
 }
 
-export { Fisheye }
+const fisheye = new Fisheye()
+export { fisheye, Fisheye }

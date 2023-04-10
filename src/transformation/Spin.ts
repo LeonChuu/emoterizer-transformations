@@ -22,4 +22,5 @@ class Spin extends ImagescriptTransformation {
   }
 }
 
-export { Spin }
+const spin = new Spin()
+export { spin, Spin }

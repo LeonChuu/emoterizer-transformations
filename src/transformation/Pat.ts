@@ -89,4 +89,5 @@ class Pat extends ImagescriptTransformation {
   }
 }
 
-export { Pat }
+const pat = new Pat()
+export { pat, Pat }

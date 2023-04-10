@@ -21,4 +21,6 @@ class Hue extends ImagescriptTransformation {
   }
 }
 
-export { Hue }
+const hue = new Hue()
+
+export { hue, Hue }

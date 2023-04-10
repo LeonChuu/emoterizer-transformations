@@ -50,4 +50,5 @@ class Fade extends ImagescriptTransformation {
   }
 }
 
-export { Fade }
+const fade = new Fade()
+export { fade, Fade }

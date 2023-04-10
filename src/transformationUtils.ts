@@ -113,4 +113,14 @@ function imageToAnimatedFrames (imageList: Image[], originalFrames?: Frame[], ar
   return result
 }
 
-export { checkAndScaleHundredth, checkDelay, mod, flip, decode, imageToAnimatedFrames }
+function throwIfOverLimitSize (decodedImage: Frame[], decodedSizeLimit?: number): void {
+  if (decodedSizeLimit !== undefined) {
+    const currentSize = decodedImage.reduce((prev, curr: Frame) => { return prev + curr.height * curr.width }, 0)
+    console.log(currentSize)
+    if (currentSize > decodedSizeLimit) {
+      throw new RangeError('Size of decoded image is larger than ' + decodedSizeLimit.toString())
+    }
+  }
+}
+
+export { checkAndScaleHundredth, checkDelay, mod, flip, decode, imageToAnimatedFrames, throwIfOverLimitSize }

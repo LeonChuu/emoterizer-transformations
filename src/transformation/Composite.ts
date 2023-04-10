@@ -17,4 +17,5 @@ class Composite extends ImagescriptTransformation {
   }
 }
 
-export { Composite }
+const composite = new Composite()
+export { composite, Composite }
