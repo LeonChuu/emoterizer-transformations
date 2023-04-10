@@ -1,6 +1,5 @@
 
 import { Image, Frame, decode as decodeB, GIF } from 'imagescript'
-import { decode as decodeAPNG } from 'lib-upng'
 import { AnimatedTransformationParameter } from './parameters/AnimatedTransformationParameter.js'
 /**
  * Checks the validity of a  0 > value < 100  and scales it to the range of 0 to maxValue.
@@ -78,7 +77,7 @@ async function decode (image: Buffer): Promise<Frame[]> {
 }
 
 function imageToAnimatedFrames (imageList: Image[], originalFrames?: Frame[], args?: AnimatedTransformationParameter): Frame[] {
-  let disposalType: string|undefined = Frame.DISPOSAL_BACKGROUND
+  let disposalType: string|undefined
   let frameDuration: number|undefined
 
   if (originalFrames === undefined) {
