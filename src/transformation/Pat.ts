@@ -1,29 +1,15 @@
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
-import * as fs from 'fs'
-import * as path from 'path'
-import { Frame, Image, GIF } from 'imagescript'
+import { Frame, Image } from 'imagescript'
 import { PatParameter } from '../parameters/PatParameter.js'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
 import { imageToAnimatedFrames } from '../transformationUtils.js'
 
-const filenamevar = fileURLToPath(import.meta.url)
-const dirnamevar = dirname(filenamevar)
-
 class Pat extends ImagescriptTransformation {
-  patGif: Promise<Frame[]>
-  constructor () {
-    super()
-    const pat = fs.readFileSync(path.resolve(dirnamevar, '../../resources/pat.gif'))
-    this.patGif = GIF.decode(pat).then(gif => Array.from(gif)) as Promise<Frame[]>
-  }
-
   async imagescriptTransform (image: Frame[], args: PatParameter): Promise<Frame[]> {
     const firstFrame = image[0]
     const height = firstFrame.height
     const width = firstFrame.width
     const length = image.length
-    const origpat = (await this.patGif).map(frame => frame.resize(width, height))
+    const origpat = (await args.patGif).map(frame => frame.resize(width, height))
     const emptyFrame = new Image(width, height).fill(0x00000000)
 
     const argSquishOffsetx = 0
