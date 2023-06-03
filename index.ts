@@ -1,3 +1,5 @@
+export { accelerate, Accelerate } from './src/transformation/Accelerate.js'
+export { AccelerateParameter } from './src/parameters/AccelerateParameter.js'
 export { invert, Invert } from './src/transformation/Invert.js'
 export { spin, Spin } from './src/transformation/Spin.js'
 export { SpinParameter } from './src/parameters/SpinParameter.js'

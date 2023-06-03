@@ -14,7 +14,6 @@ class Spin extends ImagescriptTransformation {
     for (let cumulativeAngle = 0, frameIndex = 0;
       cumulativeAngle < this.CYCLE;
       cumulativeAngle += angle, frameIndex = (frameIndex + 1) % image.length) {
-      console.log(cumulativeAngle)
       result.push(image[frameIndex].clone().rotate(cumulativeAngle, false))
     }
 
