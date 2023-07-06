@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "npm run build",
     "compile": "tsc",
-    "build": "tsc && cp -r resources dist"
+    "build": "tsc"
   },
   "main": "./dist/index.js",
   "devDependencies": {
