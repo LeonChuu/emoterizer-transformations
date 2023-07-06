@@ -4,7 +4,7 @@ import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformatio
 import { HueParameter } from '../parameters/HueParameter.js'
 import { imageToAnimatedFrames } from '../transformationUtils.js'
 
-class Hue extends ImagescriptTransformation {
+class Hue extends ImagescriptTransformation<HueParameter> {
   CYCLE = 360
   async imagescriptTransform (image: Frame[], args: HueParameter): Promise<Frame[]> {
     // iterating over the angles, while looping over the frames of the input.

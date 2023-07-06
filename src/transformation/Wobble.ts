@@ -3,7 +3,7 @@ import { Frame, Image } from 'imagescript'
 import { WobbleParameter } from '../parameters/WobbleParameter.js'
 import { imageToAnimatedFrames } from '../transformationUtils.js'
 
-class Wobble extends ImagescriptTransformation {
+class Wobble extends ImagescriptTransformation<WobbleParameter> {
   async imagescriptTransform (image: Frame[], args: WobbleParameter): Promise<Frame[]> {
     const firstFrame = image[0]
     const height = firstFrame.height

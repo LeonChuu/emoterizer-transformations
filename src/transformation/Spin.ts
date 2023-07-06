@@ -4,7 +4,7 @@ import { Frame, Image } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { checkAndScaleHundredth, imageToAnimatedFrames } from '../transformationUtils.js'
 
-class Spin extends ImagescriptTransformation {
+class Spin extends ImagescriptTransformation<SpinParameter> {
   CYCLE = 360
   async imagescriptTransform (image: Frame[], args: SpinParameter): Promise<Frame[]> {
     const angle = checkAndScaleHundredth(args.speed, this.CYCLE)

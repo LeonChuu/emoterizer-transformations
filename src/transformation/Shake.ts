@@ -2,7 +2,7 @@ import { Frame, Image } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { ShakeParameter } from '../parameters/ShakeParameter.js'
 import { imageToAnimatedFrames } from '../transformationUtils.js'
-class Shake extends ImagescriptTransformation {
+class Shake extends ImagescriptTransformation<ShakeParameter> {
   // star-shaped movement for the shakes
   movement = [[1, 0], [-1, -1], [0, 1], [1, 0], [-1, 1]]
   async imagescriptTransform (image: Frame[], args: ShakeParameter): Promise<Frame[]> {

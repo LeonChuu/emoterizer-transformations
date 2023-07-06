@@ -2,7 +2,7 @@ import { Frame } from 'imagescript'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { AccelerateParameter } from '../parameters/AccelerateParameter.js'
 
-class Accelerate extends ImagescriptTransformation {
+class Accelerate extends ImagescriptTransformation<AccelerateParameter> {
   async imagescriptTransform (image: Frame[], args: AccelerateParameter): Promise<Frame[]> {
     const outputFrameList: Frame[] = []
     if ((image.length < 2) || (args.acceleration === 0)) {

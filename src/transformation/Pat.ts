@@ -3,7 +3,7 @@ import { Frame, Image } from 'imagescript'
 import { PatParameter } from '../parameters/PatParameter.js'
 import { imageToAnimatedFrames } from '../transformationUtils.js'
 
-class Pat extends ImagescriptTransformation {
+class Pat extends ImagescriptTransformation<PatParameter> {
   async imagescriptTransform (image: Frame[], args: PatParameter): Promise<Frame[]> {
     const firstFrame = image[0]
     const height = firstFrame.height

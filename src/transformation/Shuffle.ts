@@ -3,7 +3,7 @@ import { Frame, Image } from 'imagescript'
 import { ShuffleParameter } from '../parameters/ShuffleParameter.js'
 import { flip, imageToAnimatedFrames } from '../transformationUtils.js'
 
-class Shuffle extends ImagescriptTransformation {
+class Shuffle extends ImagescriptTransformation<ShuffleParameter> {
   async imagescriptTransform (image: Frame[], args: ShuffleParameter): Promise<Frame[]> {
     let currentOrientationHorizontal: boolean = false
     let currentOrientationVertical: boolean = false

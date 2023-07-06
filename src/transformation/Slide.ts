@@ -2,7 +2,7 @@ import { Frame, Image } from 'imagescript'
 import { imageToAnimatedFrames, mod } from '../transformationUtils.js'
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
 import { SlideParameter } from '../parameters/SlideParameter.js'
-class Slide extends ImagescriptTransformation {
+class Slide extends ImagescriptTransformation<SlideParameter> {
   async imagescriptTransform (image: Frame[], args: SlideParameter): Promise<Frame[]> {
     const interval = Math.abs(args.interval) / 100
     const width = image[0].width

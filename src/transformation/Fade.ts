@@ -3,7 +3,7 @@ import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformatio
 import { FadeParameter } from '../parameters/FadeParameter.js'
 import { imageToAnimatedFrames } from '../transformationUtils.js'
 
-class Fade extends ImagescriptTransformation {
+class Fade extends ImagescriptTransformation<FadeParameter> {
   async imagescriptTransform (image: Frame[], args: FadeParameter): Promise<Frame[]> {
     const outputImageList: Image[] = []
     const width = image[0].width
@@ -16,7 +16,7 @@ class Fade extends ImagescriptTransformation {
     const mask: number[][] = []
     const empty = new Image(width, height).fill(0)
     const numberOfPixelsToFade = Math.trunc((width * height) / args.frameNumber)
-    const heightList = [...Array(height).keys()]
+    const heightList = Array.from(Array(height).keys())
     const pixelList = this.shuffle([...Array(width).keys()].flatMap(wValue => heightList.map(hValue => [wValue, hValue])))
     for (let i = 0, frameIndex = 0; i < (args.frameNumber - 1); i++, frameIndex = (frameIndex + 1) % image.length) {
       if (i === 0) {
@@ -37,7 +37,7 @@ class Fade extends ImagescriptTransformation {
     return result
   }
 
-  shuffle (a): number[][] {
+  shuffle (a: number[][]): number[][] {
     var j, i: number
     var x: number[]
     for (i = a.length - 1; i > 0; i--) {

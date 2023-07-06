@@ -6,6 +6,7 @@ class SlideParameter extends AnimatedTransformationParameter {
   constructor (frames: number, interval: number, frameDuration?: number,
     firstFrameDuration?: number, lastFrameDuration?: number, disposalType?: string) {
     super('slide', frameDuration, firstFrameDuration, lastFrameDuration, disposalType)
+    this.interval = interval
     this.frames = frames
   }
 }

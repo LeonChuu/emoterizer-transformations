@@ -3,7 +3,7 @@ import { Frame, Image } from 'imagescript'
 import { CompositeParameter } from '../parameters/CompositeParameter.js'
 import { decode, imageToAnimatedFrames } from '../transformationUtils.js'
 
-class Composite extends ImagescriptTransformation {
+class Composite extends ImagescriptTransformation<CompositeParameter> {
   async imagescriptTransform (image: Frame[], args: CompositeParameter): Promise<Frame[]> {
     const imageOnTop: Image[] = (await decode(args.imageOnTop)).map(frame => frame.resize(image[0].width, image[0].height))
     const outputImageList = image.map((frame, i) => {

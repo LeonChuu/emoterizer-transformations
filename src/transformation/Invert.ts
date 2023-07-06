@@ -4,7 +4,7 @@ import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformatio
 import { imageToAnimatedFrames } from '../transformationUtils.js'
 import { TransformationParameter } from '../parameters/TransformationParameter.js'
 
-class Invert extends ImagescriptTransformation {
+class Invert extends ImagescriptTransformation<TransformationParameter> {
   async imagescriptTransform (image: Frame[], args: TransformationParameter): Promise<Frame[]> {
     return imageToAnimatedFrames(image.map(frame => frame.invert()), image)
   }
