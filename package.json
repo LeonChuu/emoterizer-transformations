@@ -6,13 +6,8 @@
     "lib-upng": "^3.0.0"
   },
   "type": "module",
-  "scripts": {
-    "prepare": "npm run build",
-    "compile": "tsc",
-    "build": "tsc"
-  },
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "devDependencies": {
-    "@types/node": "^18.15.2"
+    "bun-types": "^0.8.1"
   }
 }
