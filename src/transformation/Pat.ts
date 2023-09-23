@@ -1,5 +1,5 @@
 import { ImagescriptTransformation } from '../abstracts/ImagescriptTransformation.js'
-import { Frame, Image } from 'imagescript'
+import { Frame, GIF, Image } from 'imagescript'
 import { PatParameter } from '../parameters/PatParameter.js'
 import { imageToAnimatedFrames } from '../transformationUtils.js'
 
@@ -9,9 +9,9 @@ class Pat extends ImagescriptTransformation<PatParameter> {
     const height = firstFrame.height
     const width = firstFrame.width
     const length = image.length
-    const origpat = (await args.patGif).map(frame => frame.resize(width, height))
+    const patGif = GIF.decode(args.patGif).then(gif => Array.from(gif)) as Promise<Frame[]>
+    const origpat = (await patGif).map(frame => frame.resize(width, height))
     const emptyFrame = new Image(width, height).fill(0x00000000)
-
     const argSquishOffsetx = 0
     const argSquishOffsety = 0
     const argHandOffsetx = 0
